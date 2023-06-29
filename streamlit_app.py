@@ -38,5 +38,7 @@ for x in fruits_selected:
  streamlit.text(x)
  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+x)
  streamlit.text(fruityvice_response.json())
+ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+ streamlit.dataframe(fruityvice_normalized)
 
 
