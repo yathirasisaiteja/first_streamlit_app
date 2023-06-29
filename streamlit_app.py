@@ -28,11 +28,13 @@ streamlit.dataframe(my_fruit_list)
 
 streamlit.header('🍌🥭 list of fruites selected 🥝🍇')
 fruits_to_show = my_fruit_list.loc[fruits_selected]
-streamlit.text(len(fruits_to_show))
+#streamlit.text(len(fruits_to_show))
 streamlit.dataframe(fruits_to_show)
 
 streamlit.header("Fruityvice Fruit Advice!")
 
+for x in fruits_to_show[Fruit]:
+  streamlit.text(x)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
 
