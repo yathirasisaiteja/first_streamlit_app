@@ -23,7 +23,7 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 #streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index))
 
 fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
-streamlit.text(fruits_selected)
+#streamlit.text(fruits_selected)
 
 streamlit.dataframe(my_fruit_list)
 
@@ -34,8 +34,8 @@ streamlit.dataframe(fruits_to_show)
 
 streamlit.header("Fruityvice Fruit Advice!")
 
-#for x in fruits_to_show[Fruit]:
- # streamlit.text(x)
+for x in fruits_selected:
+ streamlit.text(x)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
 
