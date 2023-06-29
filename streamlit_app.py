@@ -28,6 +28,7 @@ streamlit.dataframe(my_fruit_list)
 
 streamlit.header('🍌🥭 list of fruites selected 🥝🍇')
 fruits_to_show = my_fruit_list.loc[fruits_selected]
+streamlit.text(len(fruits_to_show))
 streamlit.dataframe(fruits_to_show)
 
 streamlit.header("Fruityvice Fruit Advice!")
