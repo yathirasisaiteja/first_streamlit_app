@@ -47,7 +47,7 @@ for x in fruits_selected:
   fruityvice_normalized = streamlit.dataframe(fruityvice_normalized);
   streamlit.text(fruityvice_normalized)
   #fruityvice_normalized = fruityvice_normalized.set_index('name')
-  streamlit.dataframe(fruityvice_normalized)
+  #streamlit.dataframe(fruityvice_normalized)
  except URLError as e:
   streamlit.error()
 
