@@ -59,8 +59,12 @@ streamlit.write('The user entered ', fruit_choice)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
 streamlit.text(fruityvice_response.json())
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-fruityvice_normalized = fruityvice_normalized.set_index('name')
-streamlit.dataframe(fruityvice_normalized)
+try:
+ fruityvice_normalized = fruityvice_normalized.set_index('name')
+ streamlit.dataframe(fruityvice_normalized)
+except:
+ streamlit.text('fruit '+x+' not present at the server')
+
 
 #snow connector usage
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
