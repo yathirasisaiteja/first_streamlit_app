@@ -43,7 +43,7 @@ for x in fruits_selected:
  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+x)
  streamlit.text(fruityvice_response.json())
  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
- fruityvice_normalized = fruityvice_normalized.set_index('name')
+ #fruityvice_normalized = fruityvice_normalized.set_index('name')
  streamlit.dataframe(fruityvice_normalized)
 
 streamlit.header("🍇 Fruityvice Fruit Advice!  🍇")
