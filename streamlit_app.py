@@ -40,11 +40,14 @@ streamlit.header("🥝 Fruityvice Fruit Advice! 🥝")
 
 for x in fruits_selected:
  streamlit.text(x)
- fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+x)
- streamlit.text(fruityvice_response.json())
- fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
- fruityvice_normalized = fruityvice_normalized.set_index('name')
- streamlit.dataframe(fruityvice_normalized)
+ try:
+  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+x)
+  streamlit.text(fruityvice_response.json())
+  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  fruityvice_normalized = fruityvice_normalized.set_index('name')
+  streamlit.dataframe(fruityvice_normalized)
+ except URLError as e:
+  streamlit.error()
 
 streamlit.header("🍇 Fruityvice Fruit Advice!  🍇")
 
