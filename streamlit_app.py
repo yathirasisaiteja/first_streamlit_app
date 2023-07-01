@@ -44,8 +44,11 @@ for x in fruits_selected:
   fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+x)
   streamlit.text(fruityvice_response.json())
   fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-  #fruityvice_normalized = fruityvice_normalized.set_index('name')
-  streamlit.dataframe(fruityvice_normalized)
+  try:
+   fruityvice_normalized = fruityvice_normalized.set_index('name')
+   streamlit.dataframe(fruityvice_normalized)
+  except Error as e:
+   streamlit.text("fruit",x,"not present at the server")
  except URLError as e:
   streamlit.error()
 
