@@ -69,4 +69,3 @@ my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from st
 
 
 
-
