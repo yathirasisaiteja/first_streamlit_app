@@ -48,7 +48,7 @@ for x in fruits_selected:
    fruityvice_normalized = fruityvice_normalized.set_index('name')
    streamlit.dataframe(fruityvice_normalized)
   except:
-   streamlit.text('fruit'+x+'not present at the server')
+   streamlit.text('fruit '+x+' not present at the server')
  except URLError as e:
   streamlit.error()
 
