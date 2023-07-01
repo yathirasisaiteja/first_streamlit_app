@@ -38,12 +38,17 @@ streamlit.dataframe(fruits_to_show)
 
 streamlit.header("🥝 Fruityvice Fruit Advice! 🥝")
 
+def get_fruityvice_data(this_fruit_choice):
+ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+this_fruit_choice)
+ streamlit.text(fruityvice_response.json())
+ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+ return fruityvice_normalized
+ 
+
 for x in fruits_selected:
  streamlit.text(x)
  try:
-  fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+x)
-  streamlit.text(fruityvice_response.json())
-  fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+  fruityvice_normalized = get_fruityvice_data(x)
   try:
    fruityvice_normalized = fruityvice_normalized.set_index('name')
    streamlit.dataframe(fruityvice_normalized)
